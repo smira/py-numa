@@ -69,7 +69,7 @@ def node_to_cpus(node):
         raise RuntimeError, node
 
     for i in range(0, 8):
-        for j in range (0, sizeof(unsigned long)):
+        for j in range (0, sizeof(unsigned long)*8):
             if buf[i] & (1 << j) == (1 << j):
                 result.add(i*8 + j)
 
