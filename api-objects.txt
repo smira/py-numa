@@ -1,0 +1,17 @@
+numa	numa-module.html
+numa.available	numa-module.html#available
+numa.get_membind	numa-module.html#get_membind
+numa.set_run_on_node_mask	numa-module.html#set_run_on_node_mask
+numa.bind	numa-module.html#bind
+numa.get_preferred	numa-module.html#get_preferred
+numa.get_node_size	numa-module.html#get_node_size
+numa.__package__	numa-module.html#__package__
+numa.get_interleave_mask	numa-module.html#get_interleave_mask
+numa.get_run_on_node_mask	numa-module.html#get_run_on_node_mask
+numa.set_interleave_mask	numa-module.html#set_interleave_mask
+numa.node_to_cpus	numa-module.html#node_to_cpus
+numa.set_localalloc	numa-module.html#set_localalloc
+numa.get_max_node	numa-module.html#get_max_node
+numa.set_membind	numa-module.html#set_membind
+numa.get_distance	numa-module.html#get_distance
+numa.set_preferred	numa-module.html#set_preferred
