@@ -48,4 +48,17 @@ cdef extern from "numa.h":
     void numa_warn(int number, char *where, ...)
     int numa_exit_on_error
     
+    
+cdef extern from "sched.h":
+    ctypedef int pid_t
+    ctypedef int cpu_set_t
+
+    int sched_setaffinity(pid_t pid, unsigned int cpusetsize, cpu_set_t *mask)
+
+    int sched_getaffinity(pid_t pid, unsigned int cpusetsize, cpu_set_t *mask)
+
+    void CPU_CLR(int cpu, cpu_set_t *set)
+    int CPU_ISSET(int cpu, cpu_set_t *set)
+    void CPU_SET(int cpu, cpu_set_t *set)
+    void CPU_ZERO(cpu_set_t *set)
 

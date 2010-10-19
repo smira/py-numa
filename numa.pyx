@@ -228,3 +228,49 @@ def get_distance(node1, node2):
 
     return numa_distance(node1, node2)
 
+def get_affinity(pid):
+    """
+    Returns the affinity mask of the process whose ID is pid.
+
+    @param pid: process PID (0 == current process)
+    @type pid: C{int}
+    @return: set of CPU ids
+    @rtype: C{set}
+    """
+    cdef cpu_set_t cpuset
+    cdef int i
+
+    result = set()
+
+    sched_getaffinity(pid, sizeof(cpu_set_t), &cpuset)
+
+    for i in range(0, sizeof(cpu_set_t)*8):
+        if CPU_ISSET(i, &cpuset):
+            result.add(i)
+
+    return result
+
+def set_affinity(pid, cpuset):
+    """
+    Sets  the  CPU  affinity  mask of the process whose ID is pid to the value specified by mask.  
+    
+    If pid is zero, then the calling process is used.
+
+    @param pid: process PID (0 == current process)
+    @type pid: C{int}
+    @param cpuset: set of CPU ids
+    @type cpuset: C{set}
+    """
+    cdef cpu_set_t _cpuset
+    cdef int i
+
+    CPU_ZERO(&_cpuset)
+
+    for i in range(0, sizeof(cpu_set_t)*8):
+        if i in cpuset:
+            CPU_SET(i, &_cpuset)
+
+    if sched_setaffinity(pid, sizeof(cpu_set_t), &_cpuset) < 0:
+        raise RuntimeError
+    
+
