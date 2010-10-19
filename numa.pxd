@@ -1,7 +1,7 @@
 cdef extern from "numa.h":
     ctypedef int nodemask_t
 
-    bint numa_available()
+    int numa_available()
     int numa_max_node()
     int numa_preferred()
     long numa_node_size(int node, long *freep)
@@ -21,7 +21,7 @@ cdef extern from "numa.h":
     nodemask_t numa_get_interleave_mask()
     void numa_bind(nodemask_t *nodemask)
     void numa_set_preferred(int node)
-    void numa_set_localalloc(int flag)
+    void numa_set_localalloc()
     void numa_set_membind(nodemask_t *nodemask)
     nodemask_t numa_get_membind()
 
@@ -47,7 +47,5 @@ cdef extern from "numa.h":
     void numa_error(char *where)
     void numa_warn(int number, char *where, ...)
     int numa_exit_on_error
-    
-
     
 
