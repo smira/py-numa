@@ -1,0 +1,4 @@
+build/
+dist/
+numa.c
+numa.so
