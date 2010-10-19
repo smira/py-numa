@@ -70,8 +70,8 @@ def node_to_cpus(node):
 
     for i in range(0, 8):
         for j in range (0, sizeof(unsigned long)*8):
-            if buf[i] & (1 << j) == (1 << j):
-                result.add(i*8 + j)
+            if buf[i] & (1L << j) == (1L << j):
+                result.add(i*sizeof(unsigned long)*8 + j)
 
     return result
 
