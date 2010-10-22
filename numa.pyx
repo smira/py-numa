@@ -82,7 +82,7 @@ cdef object numa_nodemask_to_set(nodemask_t mask):
     cdef object result = set()
     cdef int i
 
-    for i in range(0, get_max_node()):
+    for i in range(0, get_max_node()+1):
         if nodemask_isset(&mask, i):
             result.add(i)
 
@@ -96,7 +96,7 @@ cdef set_to_numa_nodemask(object mask, nodemask_t *result):
 
     nodemask_zero(result)
 
-    for i in range(0, get_max_node()):
+    for i in range(0, get_max_node()+1):
         if i in mask:
             nodemask_set(result, i)
 
