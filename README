@@ -11,3 +11,6 @@ If Cython isn't installed, you can install it through package manager (preferred
 
     easy_install cython
 
+libnuma development package is required for building, on CentOS please do:
+
+    yum install numactl-devel
