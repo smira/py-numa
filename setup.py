@@ -1,18 +1,30 @@
 from distutils.core import setup
 from distutils.extension import Extension
-from Cython.Distutils import build_ext
 
-ext_modules=[
-    Extension("numa",
-              ["numa.pyx"],
-              libraries=["numa"],
-              define_macros = [('NUMA_VERSION1_COMPATIBILITY', 1)],
-              ) 
-]
+try:
+    from Cython.Distutils import build_ext
+
+    source_file = "numa.pyx"
+    cython_available = True
+except ImportError:
+    source_file = "numa.c"
+    cython_available = False
+
+options = { 'ext_modules'  : [
+            Extension("numa",
+                      [source_file],
+                      libraries=["numa"],
+                      define_macros = [('NUMA_VERSION1_COMPATIBILITY', 1)],
+                      ) 
+                             ]
+          }
+
+if cython_available:
+    options['cmdclass'] = {"build_ext": build_ext}
 
 setup(
     name = "numa",
-    version = '1.3.1',
+    version = '1.3.2',
     description = "Interface to numa(3) Linux API for Python",
     author = 'Andrey Smirnov',
     author_email = 'me@smira.ru',
@@ -22,7 +34,6 @@ setup(
 
         It allows to query NUMA state, change memory & scheduling policies.
         ''',
-    cmdclass = {"build_ext": build_ext},
     license = 'GPL',
     platforms = ['any'],
     classifiers = [
@@ -30,6 +41,6 @@ setup(
         'License :: OSI Approved :: GNU General Public License (GPL)',
         'Operating System :: POSIX :: Linux',
             ],
-    ext_modules = ext_modules
+    **options
 )
 
