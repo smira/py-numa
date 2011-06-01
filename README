@@ -3,13 +3,11 @@ Python Interface to numa(3) Linux library
 
 API docs available at: http://smira.github.com/py-numa/
 
-Installation (requires Cython):
-    
+Installation:
+
     easy_install numa
 
-If Cython isn't installed, you can install it through package manager (preferred) or by running:
-
-    easy_install cython
+Support both PyPy runtime (via ctypes) and CPython (via Cython module).
 
 libnuma development package is required for building, on CentOS please do:
 

@@ -28,7 +28,7 @@ else:
 
 setup(
     name = "numa",
-    version = '1.3.3',
+    version = '1.4.0',
     description = "Interface to numa(3) Linux API for Python",
     author = 'Andrey Smirnov',
     author_email = 'me@smira.ru',
@@ -37,6 +37,8 @@ setup(
         numa provides interface to numa(3) Linux APIs (version 1).
 
         It allows to query NUMA state, change memory & scheduling policies.
+
+        Supports PyPy (via ctypes) and CPython (via Cython).
         ''',
     license = 'GPL',
     platforms = ['any'],
