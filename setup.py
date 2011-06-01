@@ -1,26 +1,30 @@
 from distutils.core import setup
 from distutils.extension import Extension
+import sys
 
-try:
-    from Cython.Distutils import build_ext
+if sys.subversion[0] == 'PyPy':
+    options = {'py_modules':['numa']}
+else:
+    try:
+        from Cython.Distutils import build_ext
 
-    source_file = "numa.pyx"
-    cython_available = True
-except ImportError:
-    source_file = "numa.c"
-    cython_available = False
+        source_file = "numa.pyx"
+        cython_available = True
+    except ImportError:
+        source_file = "numa.c"
+        cython_available = False
 
-options = { 'ext_modules'  : [
-            Extension("numa",
-                      [source_file],
-                      libraries=["numa"],
-                      define_macros = [('NUMA_VERSION1_COMPATIBILITY', 1)],
-                      ) 
-                             ]
-          }
+    options = { 'ext_modules'  : [
+                Extension("numa",
+                          [source_file],
+                          libraries=["numa"],
+                          define_macros = [('NUMA_VERSION1_COMPATIBILITY', 1)],
+                          ) 
+                                 ]
+              }
 
-if cython_available:
-    options['cmdclass'] = {"build_ext": build_ext}
+    if cython_available:
+        options['cmdclass'] = {"build_ext": build_ext}
 
 setup(
     name = "numa",
