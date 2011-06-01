@@ -34,7 +34,7 @@ setup(
     author_email = 'me@smira.ru',
     url = 'http://github.com/smira/py-numa',
     long_description = '''
-        numa provides interface to numa(3) Linux APIs (version 1).
+        numa provides interface to numa(3) Linux APIs (version 1/2).
 
         It allows to query NUMA state, change memory & scheduling policies.
 
