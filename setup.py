@@ -28,7 +28,7 @@ else:
 
 setup(
     name = "numa",
-    version = '1.4.2',
+    version = '1.4.3',
     description = "Interface to numa(3) Linux API for Python",
     author = 'Andrey Smirnov',
     author_email = 'me@smira.ru',
