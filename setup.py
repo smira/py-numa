@@ -28,7 +28,7 @@ else:
 
 setup(
     name = "numa",
-    version = '1.4.1',
+    version = '1.4.2',
     description = "Interface to numa(3) Linux API for Python",
     author = 'Andrey Smirnov',
     author_email = 'me@smira.ru',
@@ -40,11 +40,11 @@ setup(
 
         Supports PyPy (via ctypes) and CPython (via Cython).
         ''',
-    license = 'GPL',
+    license = 'MIT',
     platforms = ['any'],
     classifiers = [
         'Development Status :: 3 - Alpha',
-        'License :: OSI Approved :: GNU General Public License (GPL)',
+        'License :: OSI Approved :: MIT License',
         'Operating System :: POSIX :: Linux',
             ],
     **options
