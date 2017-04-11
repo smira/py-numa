@@ -77,7 +77,7 @@ def node_to_cpus(node):
 
 cdef object numa_nodemask_to_set(nodemask_t mask):
     """
-    Conver NUMA nodemask to Python set.
+    Convert NUMA nodemask to Python set.
     """
     cdef object result = set()
     cdef int i
@@ -90,7 +90,7 @@ cdef object numa_nodemask_to_set(nodemask_t mask):
 
 cdef set_to_numa_nodemask(object mask, nodemask_t *result):
     """
-    Conver Python set to NUMA nodemask.
+    Convert Python set to NUMA nodemask.
     """
     cdef int i
 
@@ -124,8 +124,8 @@ def get_interleave_mask():
 
 def bind(nodemask):
     """
-    Binds the current thread and its children to the nodes specified in nodemask.  
-    They will only run on the CPUs of the specified nodes and only be able to allocate memory from them. 
+    Binds the current thread and its children to the nodes specified in nodemask.
+    They will only run on the CPUs of the specified nodes and only be able to allocate memory from them.
 
     @param nodemask: node mask
     @type nodemask: C{set}
@@ -139,7 +139,7 @@ def bind(nodemask):
 def set_preferred(node):
     """
     Sets  the preferred node for the current thread to node.
-    
+
     The preferred node is the node on which memory is preferably allocated before falling back to other
     nodes. The default is to use the node on which the process is currently running (local policy).
 
@@ -153,16 +153,16 @@ def set_preferred(node):
 
 def set_localalloc():
     """
-    Sets a local memory allocation policy for the calling thread.  
-    
+    Sets a local memory allocation policy for the calling thread.
+
     Memory is preferably allocated on the node on which the thread is currently running.
     """
     numa_set_localalloc()
 
 def set_membind(nodemask):
     """
-    Sets the memory allocation mask.  
-    
+    Sets the memory allocation mask.
+
     The thread will only allocate memory from the nodes set in nodemask.
 
     @param nodemask: node mask
@@ -185,7 +185,7 @@ def get_membind():
 def set_run_on_node_mask(nodemask):
     """
     Runs the  current thread and its children only on nodes specified in nodemask.
-    
+
     They will not migrate to CPUs of other nodes until the node affinity is
     reset with a new call to L{set_run_on_node_mask}.
 
@@ -210,8 +210,8 @@ def get_run_on_node_mask():
 
 def get_distance(node1, node2):
     """
-    Reports the distance in the machine topology between two nodes.  
-    
+    Reports the distance in the machine topology between two nodes.
+
     The factors are a multiple of 10. It returns 0 when the distance cannot be determined. A node  has
     distance 10 to itself.  Reporting the distance requires a Linux kernel version of 2.6.10 or newer.
 
@@ -252,8 +252,8 @@ def get_affinity(pid):
 
 def set_affinity(pid, cpuset):
     """
-    Sets  the  CPU  affinity  mask of the process whose ID is pid to the value specified by mask.  
-    
+    Sets  the  CPU  affinity  mask of the process whose ID is pid to the value specified by mask.
+
     If pid is zero, then the calling process is used.
 
     @param pid: process PID (0 == current process)
@@ -272,5 +272,3 @@ def set_affinity(pid, cpuset):
 
     if sched_setaffinity(pid, sizeof(cpu_set_t), &_cpuset) < 0:
         raise RuntimeError
-    
-
