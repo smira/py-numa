@@ -1,0 +1,26 @@
+sudo: false
+
+language: python
+
+addons:
+  apt:
+    packages:
+      - libnuma-dev
+
+python:
+  - "2.7"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "pypy"
+  - "pypy3"
+
+install:
+  - pip install Cython ctypes_configure
+  - pip install .
+
+script: python test/test_ctypes.py
+
+matrix:
+    allow_failures:
+        - python: pypy3
