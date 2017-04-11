@@ -1,8 +1,8 @@
 from distutils.core import setup
 from distutils.extension import Extension
-import sys
+import platform
 
-if sys.subversion[0] == 'PyPy':
+if platform.python_implementation() == 'PyPy':
     options = {'py_modules':['numa']}
 else:
     try:
