@@ -1,3 +1,4 @@
 include numa.pyx
 include numa.c
 include numa.py
+include LICENSE
