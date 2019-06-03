@@ -1,4 +1,4 @@
-sudo: required
+dist: xenial
 
 language: python
 
@@ -9,8 +9,8 @@ addons:
 
 python:
   - "2.7"
-  - "3.5"
   - "3.6"
+  - "3.7"
   - "pypy"
   - "pypy3"
 
