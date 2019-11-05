@@ -1,4 +1,5 @@
 include numa.pyx
+include numa.pxd
 include numa.c
 include numa.py
 include LICENSE
