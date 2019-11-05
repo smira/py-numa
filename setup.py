@@ -1,5 +1,4 @@
-from distutils.core import setup
-from distutils.extension import Extension
+import setuptools
 import platform
 
 if platform.python_implementation() == 'PyPy':
@@ -15,7 +14,7 @@ else:
         cython_available = False
 
     options = {'ext_modules': [
-                Extension("numa",
+                setuptools.Extension("numa",
                           [source_file],
                           libraries=["numa"],
                           define_macros=[('NUMA_VERSION1_COMPATIBILITY', 1)],
@@ -26,9 +25,9 @@ else:
     if cython_available:
         options['cmdclass'] = {"build_ext": build_ext}
 
-setup(
+setuptools.setup(
     name="numa",
-    version='1.4.5',
+    version='1.4.6',
     description="Interface to numa(3) Linux API for Python",
     author='Andrey Smirnov',
     author_email='me@smira.ru',

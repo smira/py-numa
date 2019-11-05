@@ -1,3 +1,5 @@
+# cython: language_level=2
+
 """
 Interface to numa(3) Linux library.
 

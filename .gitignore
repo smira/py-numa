@@ -4,3 +4,5 @@ numa.c
 numa.so
 *.pyc
 _trial_temp/
+MANIFEST
+*.egg-info/
